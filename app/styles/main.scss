@@ -10,13 +10,24 @@ $grass-green: #00ba4d;
 $black: #292929;
 $light-grey: #ccc;
 
+$lg-breakpoint: 1200px;
 $md-breakpoint: 992px;
+$sm-breakpoint: 768px;
+$xs-breakpoint: 480px;
 
 html, body {
   color: $black;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 22px;
+  @media (max-width: $sm-breakpoint) {
+    font-size: 15px;
+    line-height: 21px;
+  }
+  @media (max-width: $xs-breakpoint) {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 
 h1, h2, h3 {
@@ -83,19 +94,61 @@ img {
       &-brand {
         padding: 1.5em 15px;
         height: auto;
-      }
-      &-nav {
-        li > a {
-          color: #fff;
-          &:hover, &:active, &:focus {
-            color: #fff;
+        > img {
+          width: 300px;
+          @media (max-width: $md-breakpoint) {
+            width: 230px;
+          }
+          @media (max-width: $sm-breakpoint) {
+            width: 200px;
           }
         }
-        > .open {
-          li > a {
+      }
+      &-toggle {
+        @media (max-width: $sm-breakpoint) {
+          margin-top: 2.5rem;
+        }
+        @media (max-width: $xs-breakpoint) {
+          margin-top: 2.25rem;
+        }
+      }
+      &-nav {
+        li {
+          margin-top: 2.5rem;
+          @media (max-width: $md-breakpoint) {
+            margin-top: 1.8rem;
+          }
+          @media (max-width: $sm-breakpoint) {
+            margin-top: 0;
+          }
+          > a {
             color: #fff;
             &:hover, &:active, &:focus {
               color: #fff;
+            }
+          }
+        }
+        > .open {
+          > a {
+            background: none;
+            color: #fff;
+            &:hover, &:active, &:focus {
+              background: none;
+              color: #fff;
+            }
+          }
+          .dropdown-menu {
+            > li {
+              margin-top: 0;
+              > a {
+                color: $black;
+                @media (max-width: $sm-breakpoint) {
+                  color: $light-grey;
+                  &:hover, &:active, &:focus {
+                    color: #fff;
+                  }
+                }
+              }
             }
           }
         }
@@ -108,10 +161,22 @@ img {
   background: url('../images/hero.jpg') top center;
   background-size: cover;
   padding: 6rem 0 10rem;
+  @media (max-width: $md-breakpoint) {
+    padding: 3rem 0 6rem;
+  }
+  @media (max-width: $sm-breakpoint) {
+    background: #fff;
+    padding: 0;
+  }
   .overlay {
     background: $midnight-blue;
     background: transparentize($midnight-blue, 0.2);
     color: #fff;
     padding: 0.75rem 2.25rem 1.5rem;
+    @media (max-width: $sm-breakpoint) {
+      background: #fff;
+      color: $black;
+      padding: 0.25rem 0 1.5rem;
+    }
   }
 }
